@@ -5,8 +5,6 @@ package controller;
 //
 
 import service.*;
-import model.*;
-import repository.*;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
@@ -19,6 +17,7 @@ public class CoinCtrl {
     static Scanner CoinCtrl = new Scanner(System.in);
 
     static ExpenseService service = new ExpenseService();
+    static IncomeService Iservice = new IncomeService();
     static LocalDate ExpenseDate = LocalDate.now();
 
 
@@ -26,7 +25,93 @@ public class CoinCtrl {
 // ------------------------------ All income-related UI syntax ------------------------------
 
     // Add Income UI
-public static void AddIncome(){}
+public static void AddIncomeUI(){
+
+    /*
+
+     */
+
+    //
+    String IncomeTitle;
+    while(true){
+        System.out.print("Enter Income Title: ");
+        IncomeTitle = CoinCtrl.nextLine();
+
+        if(!IncomeTitle.matches("[a-zA-Z]+")){
+            System.out.println("Error: Invalid Income Title");
+        } else {
+            break;
+        }
+
+
+    }
+
+    //
+    double ExpectedAmount;
+    while(true){
+
+        //
+        try{
+            //
+            System.out.print("Enter Expected Income Amount: R");
+            ExpectedAmount = CoinCtrl.nextDouble();
+
+            //
+            if(ExpectedAmount < 0){
+
+                System.out.println("Error: Income can't be negative");
+            }
+            //
+            else {
+                //
+                CoinCtrl.next();
+                break;
+            }
+        }
+        //
+        catch(InputMismatchException e){
+            System.out.println("Error: Expected Income Amount must be numerical");
+            CoinCtrl.next();
+        }
+
+    }
+
+    //
+    double ActualAmount;
+    while(true){
+
+        //
+        try{
+            //
+            System.out.print("Enter Expected Income Amount: R");
+            ActualAmount = CoinCtrl.nextDouble();
+
+            //
+            if(ActualAmount < 0){
+
+                System.out.println("Error: Income can't be negative");
+            }
+            //
+            else {
+                //
+                CoinCtrl.next();
+                break;
+            }
+        }
+        //
+        catch(InputMismatchException e){
+            System.out.println("Error: Income Amount must be numerical");
+            CoinCtrl.next();
+        }
+
+
+
+    }
+
+    //
+    Iservice.IncomeDataProcessing(IncomeTitle, ExpectedAmount,ActualAmount);
+
+}
 
     // View All income data
     public static void ReviewIncomeData(){}
@@ -76,7 +161,7 @@ public static void AddIncome(){}
                 }
 
             } catch (InputMismatchException e) {
-                System.out.println("*** Error: Expense must be numerical ***");
+                System.out.println("Error: Expense must be numerical");
                 CoinCtrl.next();
             }
         }
@@ -99,7 +184,8 @@ public static void AddIncome(){}
 
         }
 
-        service.InputValidation(ExpenseTitle,ExpenseAmount, ExpenseType, ExpenseDate);
+        //
+        service.ExpenseDataProcessing(ExpenseTitle,ExpenseAmount, ExpenseType, ExpenseDate);
 
     }
 
@@ -161,6 +247,7 @@ public static void main(String[] args) {
         try {
             System.out.print("==> ");
             mainMenuInput = CoinCtrl.nextInt();
+            CoinCtrl.nextLine();
 
             if (mainMenuInput <1  || mainMenuInput > 8) {
                 System.out.println("Invalid Input: Choose between 1 and 8");
@@ -179,7 +266,7 @@ public static void main(String[] args) {
 
         case 1:
             System.out.println("Add Income");
-            AddIncome();
+            AddIncomeUI();
             break;
 
         case 2:
