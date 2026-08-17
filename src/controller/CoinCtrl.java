@@ -34,6 +34,7 @@ public static void AddIncomeUI(){
     //
     String IncomeTitle;
     while(true){
+
         System.out.print("Enter Income Title: ");
         IncomeTitle = CoinCtrl.nextLine();
 
@@ -42,7 +43,6 @@ public static void AddIncomeUI(){
         } else {
             break;
         }
-
 
     }
 
@@ -64,7 +64,7 @@ public static void AddIncomeUI(){
             //
             else {
                 //
-                CoinCtrl.next();
+
                 break;
             }
         }
@@ -83,7 +83,7 @@ public static void AddIncomeUI(){
         //
         try{
             //
-            System.out.print("Enter Expected Income Amount: R");
+            System.out.print("Enter Actual Income Amount: R");
             ActualAmount = CoinCtrl.nextDouble();
 
             //
@@ -94,7 +94,6 @@ public static void AddIncomeUI(){
             //
             else {
                 //
-                CoinCtrl.next();
                 break;
             }
         }

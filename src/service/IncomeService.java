@@ -13,14 +13,16 @@ public class IncomeService {
     public void IncomeDataProcessing(String incomeTitle, double expectedAmount, double actualAmount) {
 
         //
-        double difference = actualAmount - expectedAmount;
+        double difference = expectedAmount - actualAmount;
 
         income.setIncomeTitle(incomeTitle);
         income.setExpectedAmount(expectedAmount);
         income.setActualAmount(actualAmount);
-        income.setDifference(difference);
+       // income.setDifference(difference);
 
         //
+        System.out.println("Difference is R" + difference);
+
         boolean incomeSaved = IR.saveIncome(income);
         System.out.println(incomeSaved ? "Income Saved" : "Income Not Saved");
 

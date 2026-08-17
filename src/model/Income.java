@@ -17,8 +17,15 @@ public Income() {
     this.IncomeTitle = IncomeTitle;
     this.ExpectedAmount = ExpectedAmount;
     this.ActualAmount = ActualAmount;
-    this.difference = difference;
+    this.difference = IncomeDiffArithmetic();
     this.IncomeDate = LocalDate.now();
+}
+
+public double IncomeDiffArithmetic() {
+
+    double difference = ActualAmount - ExpectedAmount;
+    return difference;
+
 }
 
 
@@ -33,10 +40,10 @@ public Income() {
     public void setActualAmount(double ActualAmount) {this.ActualAmount = ActualAmount;}
 
     public double getDifference() {return  difference;}
-    public void setDifference(double Difference) {this.difference = difference;}
+    public void setDifference(double Difference) {this.difference = IncomeDiffArithmetic();}
 
     public LocalDate getIncomeDate() {return  IncomeDate;}
-    public void setIncomeDate(LocalDate IncomeDate) {this.IncomeDate = IncomeDate;}
+   // public void setIncomeDate(LocalDate IncomeDate) {this.IncomeDate = IncomeDate;}
 
 
 }
